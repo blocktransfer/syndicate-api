@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     match = re.search(r"\d+", code)
     CIK = int(match.group()) if match else 0
     response = LEGACY_DB.query(
-      IndexName = "clients",
+      IndexName = "issuer",
       KeyConditionExpression = "CIK = :val",
       ExpressionAttributeValues = { ":val": CIK }
     )

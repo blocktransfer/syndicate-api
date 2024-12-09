@@ -6,7 +6,7 @@ def lambda_handler(event, context):
   try:
     CIK = int(event["pathParameters"]["CIK"])
     response = LEGACY_DB.query(
-      IndexName = "clients",
+      IndexName = "issuer",
       KeyConditionExpression = "CIK = :val",
       ExpressionAttributeValues = { ":val": CIK }
     )
