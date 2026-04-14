@@ -1,4 +1,4 @@
-# Block Transfer API Server
+# BlockTransfer API Server
 
 These functions read off the Stellar blockchain and manipulate internal Syndicate databases. In due time, the structure of these relationships will get documented in the TAD3 docs, to the extent they are not already public.
 

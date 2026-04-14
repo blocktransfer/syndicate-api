@@ -26,13 +26,13 @@ def lambda_handler(event, context):
   except LookupError:
     return formatActionReq(f"{BETA} To complete this transaction, you must link your account at {NEW}")
   except UserWarning:
-    return formatActionReq(f"{BETA} The person you are trying to transfer to does not have an account with Block Transfer :( They can open an account at {NEW} :)")
+    return formatActionReq(f"{BETA} The person you are trying to transfer to does not have an account with BlockTransfer :( They can open an account at {NEW} :)")
   except PermissionError:
     return formatRejection("Account restricted. Contact support@blocktransfer.com")
   except ReferenceError:
     return formatRejection(f"{BETA} The transfer destination account is restricted :(")
   except SyntaxError:
-    return formatRejection(f"{BETA} Block Transfer presently supports only stock transfers. If you believe you've encountered this error mistakenly, please contact support@blocktransfer.com for assistance :)")
+    return formatRejection(f"{BETA} BlockTransfer presently supports only stock transfers. If you believe you've encountered this error mistakenly, please contact support@blocktransfer.com for assistance :)")
   except Exception as e: ## prod -- no e
     return {
       "statusCode": 200,
