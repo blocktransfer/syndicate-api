@@ -1,6 +1,8 @@
 import boto3, json, requests, toml
 from decimal import Decimal
 
+LEGACY_DB = boto3.resource("dynamodb").Table("legacy")
+
 def lambda_handler(event, context):
   code = event["pathParameters"].get("code").upper()
   if code.isdigit():
@@ -11,6 +13,8 @@ def lambda_handler(event, context):
     return {
       "statusCode": 200,
       "body": json.dumps({
+        # check/output here or in function the Distributor.xlm bal
+        "legacy": getInternalDistributor(code)
         "outstanding": getNumOutstanding(code)
       })
     }
@@ -23,6 +27,10 @@ def lambda_handler(event, context):
         "usage": "https://api.blocktransfer.com/assets/{CIK}"
       })
     }
+
+def getInternalDistributor(code):
+  totalLegacyHeld = {scan(LEGACY_DB)} TODO
+  return totalLegacyHeld
 
 def getNumOutstanding(code):
   try:
